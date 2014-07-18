@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/tp-backbone/!svn/ver/36/trunk/tp/js/views
+END
+paginationView.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/tp-backbone/!svn/ver/30/trunk/tp/js/views/paginationView.js
+END
+itemView.js
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/tp-backbone/!svn/ver/36/trunk/tp/js/views/itemView.js
+END
+myListView.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/tp-backbone/!svn/ver/22/trunk/tp/js/views/myListView.js
+END
+modalMovie.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/tp-backbone/!svn/ver/36/trunk/tp/js/views/modalMovie.js
+END
+movie.js
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/tp-backbone/!svn/ver/36/trunk/tp/js/views/movie.js
+END
+genresList.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/tp-backbone/!svn/ver/28/trunk/tp/js/views/genresList.js
+END
+movies.js
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/tp-backbone/!svn/ver/33/trunk/tp/js/views/movies.js
+END

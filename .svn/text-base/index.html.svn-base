@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>What to Watch</title>
+		
+		<!-- Adding Backbone.Modal stylesheet here -->		
+		<link type="text/css" rel="stylesheet" href="css/backbone.modal.css">
+		<link type="text/css" rel="stylesheet" href="css/backbone.modal.theme.css">
+		
+        <link rel="stylesheet" href="css/screen.css">
+
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		
+    </head>
+    <body>
+	
+		<!-- Movie Template -->
+		<script id="movieTemplate" type="text/template">
+			<img src="<%= thumbnail %>"/>
+		</script>
+		
+		<!-- Item Template -->
+		<script id="itemTemplate" type="text/template">
+			 <li class="list-group-item"><span class="badge hidden"><a href="#" id="removeItem">x</a></span><%= title %> </li>
+		</script>
+		
+		<!-- Popup Template -->
+		  <script type="text/template" id="modal">
+			<div class="bbm-modal__topbar">
+			  <h3 class="bbm-modal__title"><%= title %></h3>
+			  
+			</div>
+			<div class="bbm-modal__section" >
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe  class="embed-responsive-item"
+						src="<%= embedTrailer %>?autoplay=1">
+					</iframe>
+				</div>
+			  <p><%= overview %></p>
+			  <p>Genres: <%= genres %> </p>
+			  <p>Released On: <%= releasedDate || "N/A" %> </p>
+			</div>
+			<div class="bbm-modal__bottombar">
+			  <a href="#" id="bbm-add" class="bbm-button">Add to My List</a>
+			  <a href="#" id="bbm-cancel" class="bbm-button">Close</a>
+			</div>
+		  </script>
+		
+		<script  type="text/template" id="genresListTemplate" >
+			<option value="">Trending</option>
+			<% _(genres).each(function(genre) { %>
+				<option value="<%= _.property("genre")(genre) %>"><%= _.property("genre")(genre) %></option>
+			<% }); %>
+		</script>
+		
+		<script  type="text/template" id="PaginationListTemplate" >
+				<% if(firstPage != 1){ %>
+				<div id="first_page" data-page="<%= firstPage %>" ><a href="#"><%= firstPage %></a></div>
+				<% } %>
+				<% if(previousPage != 0){ %>
+				<div id="previous_page" data-page="<%= previousPage %>" ><a href="#" ><%= previousPage %></a></div>
+				<% } %>
+				
+				<div id="page" ><%= page %></div>
+				<% if(page != totalPages){ %>
+				<div id="next_page" data-page="<%= nextPage %>" ><a href="#" ><%= nextPage %></a></div>
+				<% } %>
+				<% if(page != totalPages){ %>
+				<div id="last_page" data-page="<%= totalPages %>" ><a href="#"><%= totalPages %></a></div>
+				<% } %>
+		</script>
+		
+		<!--script src="js/lib/masonry.pkgd.min.js"></script-->
+		<!--script src="js/lib/imagesloaded.pkgd.min.js"></script-->
+        <script src="js/lib/jquery-1.11.1.js"></script>
+        <script src="js/lib/underscore.js"></script>
+        <script src="js/lib/backbone.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<!--script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script-->
+		
+		<!-- Adding Backbone.localStorage extension here -->
+		<script type="text/javascript" src="js/lib/backbone.localStorage-min.js"></script>
+		
+		<!-- Adding Backbone.Modal extension here -->
+		<script type="text/javascript" src="js/lib/backbone.modal.js"></script>
+		
+		<script src="js/app.js"></script>
+		
+		<!-- Models -->
+        <script src="js/models/movie.js"></script>
+        <script src="js/models/genre.js"></script>
+		
+		<!-- Collections -->
+        <script src="js/collections/movies.js"></script>
+        <script src="js/collections/genres.js"></script>
+		<script src="js/collections/myList.js"></script>
+		
+		<!-- View -->
+        <script src="js/views/movie.js"></script>
+        <script src="js/views/movies.js"></script>
+        <script src="js/views/genresList.js"></script>
+		<script src="js/views/myListView.js"></script>
+		<script src="js/views/itemView.js"></script>
+		<script src="js/views/paginationView.js"></script>
+		<script src="js/views/modalMovie.js"></script>
+		
+		
+		<div id="mainWrapper">
+			
+			
+			<div class="modalMovie"></div>
+			
+			
+			
+			<div id="wrapper">	
+			
+			<div id="header">
+				<a href="#" class="toggle-nav btn btn-lg btn-success toggleMovies" id="big-sexy"> My Movies</a>
+				<h1>What to Watch</h1>
+			</div>
+			<div id="myList"><h2>My Movies</h2></div>
+				<div id="search" >
+					<form class="form-inline" role="form">
+						<div class="form-group">
+							<input type="text"  class="form-control"  id="searchMovie" placeholder="Search movie" ></input>
+							<select  class="form-control"  id="genres_list"></select>
+							<select  class="form-control"  id="sort_criteria" >
+								<option value="most_recently" ></option>
+								<option value="title" >Title</option>
+								<option value="most_recently" >Most Recent</option>
+							</select>
+						</div>
+				</div>
+				
+				<div id="movies_list">
+					
+				</div>
+				
+				<div id="paginator"></div>
+			</div>
+		</div>
+    </body>
+</html>
